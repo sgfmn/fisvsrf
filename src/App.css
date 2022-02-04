@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Comforter&family=Corinthia:wght@400;700&family=Lato&family=Oswald:wght@700&family=Readex+Pro:wght@300;700&family=Roboto+Slab&family=Roboto:wght@300;500;900&display=swap');
+.App {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.App-header {
+    width: 50%;
+    height: 10vh;
+    margin: 10vh auto;
+}
+
+h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-size: 3vh;
+    color: rgb(255 204 0);
+}
+
+.block {
+    width: 80vh;
+    height: 20vh;
+    border: 1vh solid #fff;
+    border-radius: 1vh;
+    font-size: 3vh;
+    color: rgb(255 204 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
