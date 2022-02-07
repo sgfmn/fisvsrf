@@ -11,7 +11,12 @@ render() {
           Столицы
         </h1>
       </header>
-      <div className="city-selection"></div>
+      <div className="cities-selection">
+          <div className="cities-variant">Текст 1</div>
+          <div className="cities-variant">Текст 2</div>
+          <div className="cities-variant">Текст 3</div>
+          <div className="cities-variant">Текст 4</div>
+      </div>
     </div>
   );
 }

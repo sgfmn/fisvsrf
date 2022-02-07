@@ -7,7 +7,7 @@ import CitiesPage from './cities-page/cities-page';
 export default class App extends Component {
 
 state = {
-  page: 'cities-page',
+  page: 'start-page',
 }
 
 changePage = (pageType) => {

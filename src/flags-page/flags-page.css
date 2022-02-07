@@ -11,3 +11,21 @@
     height: 10vh;
     margin: 10vh auto;
 }
+
+.flags-selection {
+    width: 50%;
+    height: 60vh;
+    background-color: rgb(255 204 0);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 1vh;
+}
+
+.flags-variant {
+    width: 35%;
+    height: 35%;
+    margin: 0.5vh;
+    cursor: pointer;
+}

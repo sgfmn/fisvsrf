@@ -9,11 +9,11 @@
 .start-page-header {
     width: 50%;
     height: 10vh;
-    margin: 10vh auto;
+    margin: 15vh auto 5vh;
 }
 
 .start-page-block {
-    width: 80vh;
+    width: 70vh;
     height: 20vh;
     border: 1vh solid #fff;
     border-radius: 1vh;
@@ -22,5 +22,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    margin: 10px auto;
+    cursor: pointer;
 }

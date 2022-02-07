@@ -9,7 +9,7 @@ render() {
     <div className="start-page">
       <header className="start-page-header">
         <h1>
-          Флаги и столицы всех субъектов Российской Федерации
+          Игра «Флаги и столицы всех субъектов Российской Федерации»
         </h1>
       </header>
       <div className="start-page-block" onClick={() => click('flags-page')}>Флаги</div>
