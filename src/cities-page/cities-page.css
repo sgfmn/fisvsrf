@@ -17,16 +17,16 @@
     height: 60vh;
     background-color: #fff;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
     border-radius: 1vh;
 }
 
 .cities-variant {
-    width: 35vh;
-    height: 10vh;
-    font-size: 3vh;
+    width: 40vh;
+    height: 13vh;
+    font-size: 2.7vh;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     color: rgb(255 204 0);

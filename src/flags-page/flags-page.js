@@ -1,23 +1,61 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import './flags-page.css';
+import data from './data.json';
+
+function getQuestion() {
+  const flagsArray = [];
+  const index = Math.round(Math.random() * (data.length - 1));
+  const trueAnswer = data[index];
+  const obj = { ...trueAnswer, answer: true };
+  // console.log(obj);
+  
+  function fake(data, index) {
+    const falseAnswer = data[index];
+    // console.log(falseAnswer)
+    for(let i = 1; i <= 3; i++) {
+      if(falseAnswer !== trueAnswer) {
+        const falseObj = { ...falseAnswer, answer: false };
+      }
+    }
+    // console.log(obj1);
+    return falseObj;
+  }
+  // console.log(fake(data, index));
+
+
+  return flagsArray;
+}
 
 export default class FlagsPage extends Component {
+  
+  state = {
+    currentQuest: 0,
+    questions: []
+  }
 
-render() {
-  return (
-    <div className="flags-page">
-      <header className="flags-page-header">
-        <h1>
-          Флаги
-        </h1>
-      </header>
-      <div className="flags-selection">
-          <div className="flags-variant"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/250px-Flag_of_Russia.svg.png" /></div>
-          <div className="flags-variant"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/250px-Flag_of_Brazil.svg.png" /></div>
-          <div className="flags-variant"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Flag_of_Switzerland_%28Pantone%29.svg/250px-Flag_of_Switzerland_%28Pantone%29.svg.png" /></div>
-          <div className="flags-variant"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Flag_of_Macau.svg/250px-Flag_of_Macau.svg.png" /></div>
+  componentDidMount() {
+    const questions = [];
+    for(let i = 1; i <= 10; i++) {
+      questions.push(getQuestion())
+    }
+    this.setState({ questions: questions });
+  }
+
+  render() {
+    return (
+      <div className="flags-page">
+        <header className="flags-page-header">
+          <h1>
+            Флаги
+          </h1>
+        </header>
+        <div className="flags-selection">
+          <div className="flags-variant"><img src="" alt="Флаг" /></div>
+          <div className="flags-variant"><img src="" alt="Флаг" /></div>
+          <div className="flags-variant"><img src="" alt="Флаг" /></div>
+          <div className="flags-variant"><img src="" alt="Флаг" /></div>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 }
