@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import './flags-page.css';
 import data from './data.json';
+import { click } from '@testing-library/user-event/dist/click';
+
+function getAnswer(answerType) {
+  const index = Math.round(Math.random() * (data.length - 1));
+  const answer = data[index];
+  data.splice(index, 1);
+  const obj = { ...answer, answer: answerType, icon: false };
+  return obj;
+}
 
 function getQuestion() {
   const flagsArray = [];
@@ -15,14 +24,6 @@ function getQuestion() {
   })
 
   return flagsArray;
-}
-
-function getAnswer(answerType) {
-  const index = Math.round(Math.random() * (data.length - 1));
-  const answer = data[index];
-  data.splice(index, 1);
-  const obj = { ...answer, answer: answerType, icon: false };
-  return obj;
 }
 
 export default class FlagsPage extends Component {
@@ -40,6 +41,27 @@ export default class FlagsPage extends Component {
     this.setState({ questions: questions });
   }
 
+  clickToFlag = (answerObj) => {
+    const { indexCurrentQuest, questions } = this.state;
+    const question = questions[indexCurrentQuest];
+
+    const answerIndex = question.indexOf(answerObj);
+
+    const newQuest = [ ...question ];
+    newQuest.splice(answerIndex, 1, { ...answerObj, icon: true });
+
+    if(answerObj.answer === false) {
+      const trueAnswer = newQuest.find((element, index, array) => {
+
+      })
+    }
+
+    const newQuestions = [ ...questions ];
+    newQuestions.splice(indexCurrentQuest, 1, newQuest);
+    this.setState({ questions: newQuestions });
+    // console.log(newQuestions);
+  }
+
   render() {
     const { indexCurrentQuest, questions } = this.state;
     const question = questions[indexCurrentQuest];
@@ -48,11 +70,11 @@ export default class FlagsPage extends Component {
         return null;
     }
 
-    // const trueAnswer = question.find((answerObject) => {
-    //   return answerObject.answer;
-    // });
+    const trueAnswer = question.find((answerObject) => {
+      return answerObject.answer;
+    });
 
-    const trueAnswer = question.find(({ answer }) => answer);
+    // const trueAnswer = question.find(({ answer }) => answer);
 
     return (
       <div className="flags-page">
@@ -64,8 +86,9 @@ export default class FlagsPage extends Component {
         <div className="flags-selection">
 
         {question.map((answer) => (
-          <div key={answer.id} className="flags-variant">
-            <img src={answer.flag} />
+          <div key={answer.id} className="flags-variant" onClick={() => this.clickToFlag(answer)}>
+            <img src={answer.flag} alt="Флаг" />
+            {answer.icon && <img src={answer.answer ? "yes.png" : "no.png"} className="icon" />}
           </div>
         ))}
 
@@ -74,4 +97,3 @@ export default class FlagsPage extends Component {
     );
   }
 }
-
