@@ -82,5 +82,6 @@
     { "id": 82, "region": "Ненецкий АО", "flag": "flags-img/82.png" },
     { "id": 83, "region": "Ханты-Мансийский АО — Югра", "flag": "flags-img/83.png" },
     { "id": 84, "region": "Чукотский АО", "flag": "flags-img/84.png" },
-    { "id": 85, "region": "Ямало-Ненецкий АО", "flag": "flags-img/85.png" }
+    { "id": 85, "region": "Ямало-Ненецкий АО", "flag": "flags-img/85.png" },
+    { "id": 86, "region": "Найдите Дарта Вейдера", "flag": "flags-img/86.png" }
 ]
