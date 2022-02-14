@@ -9,7 +9,7 @@
 .flags-page-header {
     width: 50%;
     height: 10vh;
-    margin: 10vh auto 5vh;
+    margin: 8vh auto 2vh;
 }
 
 .flags-selection {
@@ -49,4 +49,31 @@
     bottom: 1vh;
     border: 1px solid rgb(100, 100, 100);
     border-radius: 2vh;
+}
+
+.next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25vh;
+    height: 7vh;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-size: 3vh;
+    color: rgb(56 84 85);
+    background-color: rgb(255 204 0);
+    border-radius: 1vh;
+    margin-top: 2vh;
+    cursor: pointer;
+}
+
+.game-over {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(56 84 85);
+    background-color: rgb(255 204 0);
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-size: 15vh;
 }

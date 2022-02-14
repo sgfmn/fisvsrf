@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './flags-page.css';
 import data from './data.json';
-import { click } from '@testing-library/user-event/dist/click';
 
 function getAnswer(answerType) {
   const index = Math.round(Math.random() * (data.length - 1));
@@ -32,11 +31,12 @@ export default class FlagsPage extends Component {
     indexCurrentQuest: 0,
     questions: [],
     click: true,
+    nextQ: true
   }
 
   componentDidMount() {
     const questions = [];
-    for(let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 10; i++) {
       questions.push(getQuestion())
     }
     this.setState({ questions: questions });
@@ -48,33 +48,41 @@ export default class FlagsPage extends Component {
 
     const answerIndex = question.indexOf(answerObj);
 
-    const newQuest = [ ...question ];
+    const newQuest = [...question];
     newQuest.splice(answerIndex, 1, { ...answerObj, icon: true });
 
-    if(answerObj.answer === false) {
+    if (answerObj.answer === false) {
       const trueAnswer = newQuest.find(({ answer }) => answer);
       const answerIndex = newQuest.indexOf(trueAnswer);
       newQuest.splice(answerIndex, 1, { ...trueAnswer, icon: true });
     }
 
-    const newQuestions = [ ...questions ];
+    const newQuestions = [...questions];
     newQuestions.splice(indexCurrentQuest, 1, newQuest);
     this.setState({ questions: newQuestions, click: false });
   }
 
+  setCurrentQuestion = () => {
+    const current = this.state.indexCurrentQuest;
+    if (current === 9) {
+      this.setState({ nextQ: false });
+    }
+    this.setState({ indexCurrentQuest: current + 1, click: true });
+  }
+
   render() {
-    const { indexCurrentQuest, questions, click } = this.state;
+    const { indexCurrentQuest, questions, click, nextQ } = this.state;
     const question = questions[indexCurrentQuest];
 
+    if (!nextQ) {
+      return <div className="game-over">Игра окончена</div>
+    }
+
     if (!question) {
-        return null;
+      return null;
     }
 
     const trueAnswer = question.find(({ answer }) => answer);
-
-    // const trueAnswer = question.find((answerObject) => {
-    //   return answerObject.answer;
-    // });
 
     return (
       <div className="flags-page">
@@ -85,15 +93,16 @@ export default class FlagsPage extends Component {
         </header>
         <div className="flags-selection">
 
-        {question.map((answer) => (
-          <div key={answer.id} className="flags-variant" onClick={() => click && this.clickToFlag(answer)}>
-            <img src={answer.flag} alt="Флаг" />
-            {answer.icon && <img src={answer.answer ? "answers/green.png" : "answers/red.png"} className="color" />}
-            {answer.icon && <img src={answer.answer ? "answers/yes.png" : "answers/no.png"} className="icon" />}
-          </div>
-        ))}
+          {question.map((answer) => (
+            <div key={answer.id} className="flags-variant" onClick={() => click && this.clickToFlag(answer)}>
+              <img src={answer.flag} alt="Флаг" />
+              {answer.icon && <img src={answer.answer ? "../../answers/green.png" : "../../answers/red.png"} className="color" />}
+              {answer.icon && <img src={answer.answer ? "../../answers/yes.png" : "../../answers/no.png"} className="icon" />}
+            </div>
+          ))}
 
         </div>
+        {<div className="next" onClick={this.setCurrentQuestion}>Следующий</div>}
       </div>
     );
   }
