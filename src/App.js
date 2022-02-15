@@ -26,7 +26,7 @@ render() {
     <div>
       {page === 'start-page' && <StartPage click={this.changePage} />}
       {page === 'flags-page' && <FlagsPage click={this.showResults} />}
-      {page === 'cities-page' && <CitiesPage />}
+      {page === 'cities-page' && <CitiesPage click={this.showResults} />}
       {page === 'results-page' && <ResultsPage results={results} restart={() => this.changePage('start-page')} />}
     </div>
   );

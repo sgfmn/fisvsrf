@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './flags-page.css';
-import data from './data.json';
+import data from '../data.json';
 
 function getAnswer(answerType) {
   const index = Math.round(Math.random() * (data.length - 1));
