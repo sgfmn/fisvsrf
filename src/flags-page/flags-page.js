@@ -31,7 +31,7 @@ export default class FlagsPage extends Component {
     indexCurrentQuest: 0,
     questions: [],
     click: true,
-    nextQ: true
+    trueAnswer: 0
   }
 
   componentDidMount() {
@@ -55,6 +55,8 @@ export default class FlagsPage extends Component {
       const trueAnswer = newQuest.find(({ answer }) => answer);
       const answerIndex = newQuest.indexOf(trueAnswer);
       newQuest.splice(answerIndex, 1, { ...trueAnswer, icon: true });
+    } else {
+      this.setState({ trueAnswer: this.state.trueAnswer + 1});
     }
 
     const newQuestions = [...questions];
@@ -64,19 +66,17 @@ export default class FlagsPage extends Component {
 
   setCurrentQuestion = () => {
     const current = this.state.indexCurrentQuest;
-    if (current === 9) {
-      this.setState({ nextQ: false });
-    }
     this.setState({ indexCurrentQuest: current + 1, click: true });
   }
 
-  render() {
-    const { indexCurrentQuest, questions, click, nextQ } = this.state;
-    const question = questions[indexCurrentQuest];
+  showResults = () => {
+    const { trueAnswer, questions } = this.state;
+    this.props.click(trueAnswer, questions.length - trueAnswer);
+  }
 
-    if (!nextQ) {
-      return <div className="game-over">Игра окончена</div>
-    }
+  render() {
+    const { indexCurrentQuest, questions, click } = this.state;
+    const question = questions[indexCurrentQuest];
 
     if (!question) {
       return null;
@@ -91,10 +91,11 @@ export default class FlagsPage extends Component {
             {trueAnswer.region}
           </h1>
         </header>
+        <div className="question-counter">{`${indexCurrentQuest + 1} / ${questions.length}`}</div>
         <div className="flags-selection">
 
           {question.map((answer) => (
-            <div key={answer.id} className="flags-variant" onClick={() => click && this.clickToFlag(answer)}>
+            <div key={answer.id} className={`flags-variant${click ? ' enable' : ''}`} onClick={() => this.clickToFlag(answer)}>
               <img src={answer.flag} alt="Флаг" />
               {answer.icon && <img src={answer.answer ? "../../answers/green.png" : "../../answers/red.png"} className="color" />}
               {answer.icon && <img src={answer.answer ? "../../answers/yes.png" : "../../answers/no.png"} className="icon" />}
@@ -102,7 +103,8 @@ export default class FlagsPage extends Component {
           ))}
 
         </div>
-        {<div className="next" onClick={this.setCurrentQuestion}>Следующий</div>}
+        {!click && indexCurrentQuest < (questions.length - 1) && <div className="btn" onClick={this.setCurrentQuestion}>Следующий</div>}
+        {!click && indexCurrentQuest === (questions.length - 1) && <div className="btn" onClick={this.showResults}>Узнать результат</div>}
       </div>
     );
   }

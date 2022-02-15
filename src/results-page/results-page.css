@@ -1,0 +1,39 @@
+.results-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.results-page-header {
+    height: 10vh;
+    margin: 8vh auto 0;
+}
+
+.results {
+    display: flex;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 5vh;
+    color: rgb(255 204 0);
+    height: 2vh;
+    padding-bottom: 2vh;
+    margin: 3vh;
+}
+
+.btn-restart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30vh;
+    height: 7vh;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-size: 2.5vh;
+    color: rgb(56 84 85);
+    background-color: rgb(255 204 0);
+    border-radius: 1vh;
+    margin-top: 2vh;
+    cursor: pointer;
+    margin-top: 10vh;
+}

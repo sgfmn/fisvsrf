@@ -9,7 +9,7 @@
 .flags-page-header {
     width: 50%;
     height: 10vh;
-    margin: 8vh auto 2vh;
+    margin: 8vh auto 0;
 }
 
 .flags-selection {
@@ -27,9 +27,14 @@
     width: 35%;
     height: 35%;
     margin: 0.5vh;
-    cursor: pointer;
     border: 1px solid rgb(100, 100, 100);
     position: relative;
+    pointer-events: none;
+}
+
+.flags-variant.enable {
+    cursor: pointer;
+    pointer-events: all;
 }
 
 .color {
@@ -51,29 +56,28 @@
     border-radius: 2vh;
 }
 
-.next {
+.question-counter {
+    display: flex;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2vh;
+    color: rgb(255 204 0);
+    height: 2vh;
+    padding-bottom: 2vh;
+}
+
+.btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 25vh;
+    width: 30vh;
     height: 7vh;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
-    font-size: 3vh;
+    font-size: 2.5vh;
     color: rgb(56 84 85);
     background-color: rgb(255 204 0);
     border-radius: 1vh;
     margin-top: 2vh;
     cursor: pointer;
-}
-
-.game-over {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgb(56 84 85);
-    background-color: rgb(255 204 0);
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    font-size: 15vh;
 }
