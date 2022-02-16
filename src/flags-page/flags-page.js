@@ -5,7 +5,7 @@ import data from '../data.json';
 const QUESTIONS_COUNT = 10;
 
 function getAnswer(answerType) {
-  const index = Math.floor(Math.random() * (data.length - 1));
+  const index = Math.round(Math.random() * (data.length - 1));
   const answer = data[index];
   data.splice(index, 1);
   const obj = { ...answer, answer: answerType, icon: false };

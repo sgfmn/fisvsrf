@@ -5,13 +5,13 @@
     height: 100%;
     background-color: rgb(56 84 85);
     user-select: none;
+    font-family: 'Oswald', sans-serif;
 }
 
 h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     font-size: 3vh;
     color: rgb(255 204 0);

@@ -6,7 +6,7 @@ const cityData = data.filter((item) => item.city);
 const QUESTIONS_COUNT = 8;
 
 function getAnswer(answerType) {
-  const index = Math.floor(Math.random() * (cityData.length - 1));
+  const index = Math.round(Math.random() * (cityData.length - 1));
   const answer = cityData[index];
   cityData.splice(index, 1);
   const obj = { ...answer, answer: answerType, responseColor: false };
