@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import './cities-page.css';
 import data from '../data.json';
 
+const cityData = data.filter((item) => item.city);
+const QUESTIONS_COUNT = 8;
+
 function getAnswer(answerType) {
-  const index = Math.round(Math.random() * (data.length - 1));
-  const answer = data[index];
-  data.splice(index, 1);
+  const index = Math.floor(Math.random() * (cityData.length - 1));
+  const answer = cityData[index];
+  cityData.splice(index, 1);
   const obj = { ...answer, answer: answerType, responseColor: false };
   return obj;
 }
@@ -18,9 +21,7 @@ function getQuestion() {
   citiesArray.push(getAnswer(false));
   citiesArray.push(getAnswer(false));
 
-  citiesArray.sort(() => {
-    return 0.5 - Math.random();
-  })
+  citiesArray.sort(() => 0.5 - Math.random());
 
   return citiesArray;
 }
@@ -36,7 +37,7 @@ export default class CitiesPage extends Component {
 
   componentDidMount() {
     const questions = [];
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= QUESTIONS_COUNT; i++) {
       questions.push(getQuestion())
     }
     this.setState({ questions: questions });
@@ -91,13 +92,13 @@ export default class CitiesPage extends Component {
             {trueAnswer.region}
           </h1>
         </header>
-        <div className="question-counter">{`${indexCurrentQuest + 1} / ${questions.length}`}</div>
+        <div className="question-counter-cities">{`${indexCurrentQuest + 1} / ${questions.length}`}</div>
         <div className="cities-selection">
 
           {question.map((answer) => (
             <div key={answer.id} className={`cities-variant${click ? ' enable' : ''}`} onClick={() => this.clickToCity(answer)}>
               <div className="cities-variant">{answer.city}</div>
-              {answer.responseColor && <img src={answer.answer ? "../../answers/green.png" : "../../answers/red.png"} className="color" />}
+              {answer.responseColor && <img src={answer.answer ? "../../answers/green.png" : "../../answers/red.png"} className="cities-color" />}
             </div>
           ))}
 

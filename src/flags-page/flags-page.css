@@ -13,8 +13,10 @@
 }
 
 .flags-selection {
-    width: 50%;
-    height: 60vh;
+    width: 100%;
+    max-width: 850px;
+    height: 100%;
+    max-height: 550px;
     background-color: rgb(255 204 0);
     display: flex;
     justify-content: space-evenly;
@@ -25,7 +27,9 @@
 
 .flags-variant {
     width: 35%;
+    max-width: 300px;
     height: 35%;
+    max-height: 180px;
     margin: 0.5vh;
     border: 1px solid rgb(100, 100, 100);
     position: relative;
@@ -37,7 +41,7 @@
     pointer-events: all;
 }
 
-.color {
+.flags-color {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -56,14 +60,14 @@
     border-radius: 2vh;
 }
 
-.question-counter {
+.question-counter-flags {
     display: flex;
     justify-content: center;
     font-family: 'Oswald', sans-serif;
     font-size: 2vh;
-    color: rgb(255 204 0);
     height: 2vh;
     padding-bottom: 2vh;
+    color: #fff;
 }
 
 .btn {
@@ -80,4 +84,28 @@
     border-radius: 1vh;
     margin-top: 2vh;
     cursor: pointer;
+}
+
+@media (max-width: 850px) {
+    .flags-variant {
+        width: 250px;
+        height: 150px;
+        margin: 20px;
+    }
+    .flags-selection {
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .flags-variant {
+        width: 180px;
+        height: 108px;
+    }
+    .flags-selection {
+        width: 100%;
+        height: 100%;
+        min-height: 500px;
+        border-radius: 0;
+    }
 }
