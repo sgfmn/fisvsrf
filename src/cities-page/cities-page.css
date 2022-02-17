@@ -66,7 +66,7 @@
     color: #fff;
 }
 
-.btn {
+.cities-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,4 +79,43 @@
     border-radius: 1vh;
     margin-top: 2vh;
     cursor: pointer;
+}
+
+@media (max-width: 850px) {
+    .cities-variant {
+        width: 250px;
+        height: 83px;
+        margin: 20px;
+        font-size: 15px;
+    }
+    .cities-selection {
+        border-radius: 0;
+        max-height: 50vh;
+    }
+}
+
+@media (max-width: 600px) {
+    .cities-variant {
+        width: 180px;
+        height: 60px;
+        font-size: 10px;
+    }
+    .cities-selection {
+        flex-direction: column;
+    }
+    .cities-btn {
+        width: 200px;
+        height: 47px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 450px) {
+    .cities-variant {
+        width: 120px;
+        height: 40px;
+    }
+    h1 {
+        font-size: 2vh;
+    }
 }

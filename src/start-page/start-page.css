@@ -7,9 +7,9 @@
 }
 
 .start-page-header {
-    width: 50%;
+    width: 35%;
     height: 10vh;
-    margin: 15vh auto 5vh;
+    margin: 12vh auto 7vh;
 }
 
 .start-page-block {
@@ -25,4 +25,39 @@
     margin: 10px auto;
     cursor: pointer;
     text-transform: uppercase;
+}
+
+@media (max-width: 1024px) {
+    .start-page-header {
+        width: 50%;
+    }
+}
+
+@media (max-width: 850px) {
+    .start-page-block {
+        width: 500px;
+        height: 143px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .start-page-block {
+        width: 400px;
+        height: 114px;
+        border: 0.8vh solid #fff;
+        border-radius: 1vh;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 450px) {
+    .start-page-block {
+        width: 140px;
+        height: 57px;
+        border: 0.5vh solid #fff;
+    }
+    .start-page-header {
+        margin: 17vh auto 10vh;
+    }
 }

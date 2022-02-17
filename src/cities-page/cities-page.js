@@ -103,8 +103,8 @@ export default class CitiesPage extends Component {
           ))}
 
         </div>
-        {!click && indexCurrentQuest < (questions.length - 1) && <div className="btn" onClick={this.setCurrentQuestion}>Следующий</div>}
-        {!click && indexCurrentQuest === (questions.length - 1) && <div className="btn" onClick={this.showResults}>Узнать результат</div>}
+        {!click && indexCurrentQuest < (questions.length - 1) && <div className="cities-btn" onClick={this.setCurrentQuestion}>Следующий</div>}
+        {!click && indexCurrentQuest === (questions.length - 1) && <div className="cities-btn" onClick={this.showResults}>Узнать результат</div>}
       </div>
     );
   }
