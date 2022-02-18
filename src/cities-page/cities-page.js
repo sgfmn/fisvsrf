@@ -104,8 +104,8 @@ export default class CitiesPage extends Component {
           ))}
 
         </div>
-        {click && <p className="cities-guess">Выберите правильный вариант</p>
-        || !click && indexCurrentQuest < (questions.length - 1) && <div className="cities-btn" onClick={this.setCurrentQuestion}>Следующий</div>}
+        {(click && <p className="cities-guess">Выберите правильный вариант</p>)
+        || (!click && indexCurrentQuest < (questions.length - 1) && <div className="cities-btn" onClick={this.setCurrentQuestion}>Следующий</div>)}
         {!click && indexCurrentQuest === (questions.length - 1) && <div className="cities-btn" onClick={this.showResults}>Узнать результат</div>}
       </div>
     );

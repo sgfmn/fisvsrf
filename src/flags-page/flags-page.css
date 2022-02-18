@@ -20,6 +20,7 @@
     background-color: rgb(255 204 0);
     display: flex;
     justify-content: space-evenly;
+    flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
     border-radius: 1vh;
@@ -30,7 +31,7 @@
     max-width: 350vh;
     height: 35%;
     max-height: 211vh;
-    margin: 0.5vh;
+    margin: 4vh;
     border: 1px solid rgb(100, 100, 100);
     position: relative;
     pointer-events: none;
@@ -148,8 +149,5 @@
     }
     h1 {
         font-size: 2vh;
-    }
-    .flags-selection {
-        flex-direction: column;
     }
 }
