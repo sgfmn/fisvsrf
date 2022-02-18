@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import './flags-page.css';
 import data from '../data.json';
 
+let flagsData;
 const QUESTIONS_COUNT = 10;
 
 function getAnswer(answerType) {
-  const index = Math.round(Math.random() * (data.length - 1));
-  const answer = data[index];
-  data.splice(index, 1);
+  const index = Math.round(Math.random() * (flagsData.length - 1));
+  const answer = flagsData[index];
+  flagsData.splice(index, 1);
   const obj = { ...answer, answer: answerType, icon: false };
   return obj;
 }
@@ -35,6 +36,7 @@ export default class FlagsPage extends Component {
   }
 
   componentDidMount() {
+    flagsData = [ ...data ];
     const questions = [];
     for (let i = 1; i <= QUESTIONS_COUNT; i++) {
       questions.push(getQuestion())
@@ -103,7 +105,8 @@ export default class FlagsPage extends Component {
           ))}
 
         </div>
-        {!click && indexCurrentQuest < (questions.length - 1) && <div className="flags-btn" onClick={this.setCurrentQuestion}>Следующий</div>}
+        {click && <p className="flags-guess">Выберите правильный вариант</p>
+        || !click && indexCurrentQuest < (questions.length - 1) && <div className="flags-btn" onClick={this.setCurrentQuestion}>Следующий</div>}
         {!click && indexCurrentQuest === (questions.length - 1) && <div className="flags-btn" onClick={this.showResults}>Узнать результат</div>}
       </div>
     );

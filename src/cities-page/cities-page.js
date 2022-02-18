@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './cities-page.css';
 import data from '../data.json';
 
-const cityData = data.filter((item) => item.city);
+let cityData;
 const QUESTIONS_COUNT = 8;
 
 function getAnswer(answerType) {
@@ -36,6 +36,7 @@ export default class CitiesPage extends Component {
   }
 
   componentDidMount() {
+    cityData = data.filter((item) => item.city);
     const questions = [];
     for (let i = 1; i <= QUESTIONS_COUNT; i++) {
       questions.push(getQuestion())
@@ -103,7 +104,8 @@ export default class CitiesPage extends Component {
           ))}
 
         </div>
-        {!click && indexCurrentQuest < (questions.length - 1) && <div className="cities-btn" onClick={this.setCurrentQuestion}>Следующий</div>}
+        {click && <p className="cities-guess">Выберите правильный вариант</p>
+        || !click && indexCurrentQuest < (questions.length - 1) && <div className="cities-btn" onClick={this.setCurrentQuestion}>Следующий</div>}
         {!click && indexCurrentQuest === (questions.length - 1) && <div className="cities-btn" onClick={this.showResults}>Узнать результат</div>}
       </div>
     );

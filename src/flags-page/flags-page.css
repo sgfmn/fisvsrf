@@ -84,6 +84,15 @@
     cursor: pointer;
 }
 
+.flags-guess {
+    width: 30vh;
+    height: 7vh;
+    color: #fff;
+    font-size: 1.5vh;
+    text-transform: uppercase;
+    margin-top: 2vh;
+}
+
 @media (max-width: 850px) {
     .flags-variant {
         width: 250px;
@@ -119,6 +128,9 @@
         width: 200px;
         height: 47px;
         font-size: 15px;
+    }
+    .flags-guess {
+        font-size: 10px;
     }
 }
 
